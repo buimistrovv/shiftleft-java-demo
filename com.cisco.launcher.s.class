@@ -1,0 +1,1512 @@
+package com.cisco.launcher;
+
+import com.cisco.nm.dice.loader.Loader;
+import com.cisco.nm.dice.loader.ProgressIf;
+import com.cisco.nm.dice.loader.SgzApplet;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Cursor;
+import java.awt.Desktop;
+import java.awt.Dimension;
+import java.awt.EventQueue;
+import java.awt.FlowLayout;
+import java.awt.Frame;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
+import java.io.BufferedReader;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.StringWriter;
+import java.net.Authenticator;
+import java.net.HttpURLConnection;
+import java.net.PasswordAuthentication;
+import java.net.URI;
+import java.net.URL;
+import java.text.MessageFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.Enumeration;
+import java.util.Hashtable;
+import java.util.Map;
+import java.util.Properties;
+import java.util.Vector;
+import javax.swing.AbstractAction;
+import javax.swing.Box;
+import javax.swing.Icon;
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JEditorPane;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JPasswordField;
+import javax.swing.JProgressBar;
+import javax.swing.JScrollPane;
+import javax.swing.JSeparator;
+import javax.swing.JTextField;
+import javax.swing.JToolBar;
+import javax.swing.SwingUtilities;
+import javax.swing.event.HyperlinkEvent;
+import javax.swing.event.HyperlinkListener;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import net.sourceforge.retroweaver.runtime.java.lang.String_;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.NodeList;
+
+public class s extends JFrame implements ActionListener, KeyListener, FocusListener, WindowListener, ItemListener, ProgressIf {
+  JPanel W = new JPanel();
+
+  JPanel long = new JPanel();
+
+  JLabel Q = new JLabel();
+
+  JLabel s = new JLabel();
+
+  JPanel ac = new JPanel();
+
+  JLabel void = new JLabel();
+
+  JProgressBar ak = new JProgressBar();
+
+  JLabel am = new JLabel("Device IP Address / Name:");
+
+  a ag = new a();
+
+  JButton f = new JButton();
+
+  JLabel a = new JLabel("Enter username and password for {0}");
+
+  JLabel l = new JLabel("Username:");
+
+  JTextField v = new JTextField(15);
+
+  JLabel K = new JLabel("Password:");
+
+  JPasswordField Z = new JPasswordField(15);
+
+  JCheckBox O = new JCheckBox("Remember the username of the specified device on this computer");
+
+  x ae = new x();
+
+  JPanel m = new JPanel();
+
+  JButton N = new JButton("OK");
+
+  JButton u = new JButton("Close");
+
+  JToolBar h = new JToolBar();
+
+  JLabel null = new JLabel();
+
+  JButton j;
+
+  GridBagLayout H = new GridBagLayout();
+
+  GridBagLayout d = new GridBagLayout();
+
+  FlowLayout goto = new FlowLayout(1, 8, 8);
+
+  GridBagLayout char = new GridBagLayout();
+
+  BorderLayout aa = new BorderLayout();
+
+  boolean q = true;
+
+  private String b;
+
+  private PasswordAuthentication C;
+
+  static Exception r;
+
+  public final String A = "ASDM will start up using Java Web Start. For ASDM 7.3(1) and later, you will be prompted to follow the wizard to create a self-signed certficate. For earlier ASDM versions, follow the <a href='http://www.cisco.com/c/en/us/td/docs/security/asdm/identity-cert/cert-install.html'><b>manual instructions</b></a> to create a self-signed certificate.Would you like to continue with self-signed cert enrollment?";
+
+  private static final String af = "java.security.cert.CertificateException: Java couldn't trust Server";
+
+  private static final String S = "javax.net.ssl.SSLHandshakeException: java.security.cert.CertificateException: Java couldn't trust Server";
+
+  private String i;
+
+  static boolean w;
+
+  public static boolean do;
+
+  static boolean n;
+
+  static s ad;
+
+  static u ah;
+
+  private String p;
+
+  private String int;
+
+  private String Y;
+
+  private int M;
+
+  private String U;
+
+  private String case = "";
+
+  private String else;
+
+  private String e;
+
+  private Hashtable an = new Hashtable();
+
+  public static final String T = "Invalid username or password.  Please try again.";
+
+  static final String[] X;
+
+  static final String g = "Loading cached software...";
+
+  static String F;
+
+  static String B;
+
+  static String new;
+
+  public static final String V = "ASDM-IDM";
+
+  public static String I;
+
+  public static String c;
+
+  public static String t;
+
+  public static String D;
+
+  public static String R;
+
+  private static final String ai = "ipAddress";
+
+  private static final String z = "userName";
+
+  private static final String byte = "preferredIP";
+
+  private static final String ab = "A newer version of the ASDM-IDM Launcher is available.";
+
+  private static final String G = "To upgrade, click the \"Upgrade Now\" button.";
+
+  private static final String k = "To upgrade, click the \"Download Now\" button.";
+
+  public static final int o = 64;
+
+  private static boolean if;
+
+  private static boolean for;
+
+  private static String E;
+
+  private static int L;
+
+  private static int try;
+
+  private int P = L;
+
+  private String aj = "asdm50-install.msi";
+
+  private static final String[] J;
+
+  private static final String al = "=";
+
+  public s() {
+    this.ae.a(this);
+    try {
+      void();
+    } catch (Exception exception) {
+      exception.printStackTrace();
+    }
+    setIconImages(t.if());
+    char();
+    String str = "Cisco ASDM-IDM Launcher ";
+    if (this.int != null)
+      str = str + "v" + this.int;
+    setTitle(str);
+    h();
+    this.ae.byte();
+    b();
+    setResizable(false);
+  }
+
+  private static void j() {
+    String str = System.getProperty("java.version");
+    if (str != null && str.length() > 5) {
+      str = str.substring(0, 5);
+      if (str.compareTo("1.4.2") < 0) {
+        JOptionPane.showMessageDialog(new Frame(), "This machine does not have the required Java Runtime Environment (JRE).\nJRE 1.4.2 or higher is required.\n\n You can download the JRE from http://java.sun.com/j2se/downloads\n", "Error", 0);
+        System.exit(0);
+      }
+    }
+  }
+
+  public static void if(String[] paramArrayOfString) {
+    j();
+    String str = do(paramArrayOfString);
+    g();
+    i.a(for);
+    if (!for)
+      ClassUtil.initExecutionEnvironment();
+    if (str != null) {
+      d d = new d();
+      d.int(str);
+    }
+    k();
+    ad = new s();
+    ad.pack();
+    ad.setLocationRelativeTo(null);
+    SgzApplet.setProgressReceiver(ad);
+    ah = new u(null, ad);
+    Authenticator.setDefault(ah);
+    ad.setVisible(true);
+    ad.toFront();
+    if (if)
+      a(paramArrayOfString);
+  }
+
+  public void updateStatus(int paramInt1, int paramInt2, String paramString) {
+    if (paramInt1 == 2) {
+      do = true;
+      goto();
+    } else if (paramInt1 == 3) {
+      n = true;
+    }
+    a(a(paramInt1));
+    if (paramInt1 == 4) {
+      if (!this.ak.isVisible()) {
+        this.ak.setVisible(true);
+        this.ak.setStringPainted(true);
+        this.ak.setIndeterminate(false);
+      }
+      this.ak.setValue(paramInt2);
+    } else if (this.ak.isVisible()) {
+      this.ak.setVisible(false);
+    }
+  }
+
+  private void goto() {
+    String str1 = d.null(this.b);
+    String str2 = (this.O.isSelected() == true) ? this.v.getText().trim() : "";
+    this.an.put(str1, str2);
+    l();
+  }
+
+  private void void() throws Exception {
+    this.ag.setName("address");
+    this.v.setName("username");
+    this.Z.setName("password");
+    this.O.setName("rememberusername");
+    if (for) {
+      String str = this.a.getText();
+      str = MessageFormat.format(str, new Object[] { E });
+      this.a.setText(str);
+    } else {
+      this.a.setVisible(false);
+    }
+    this.ag.getAccessibleContext().setAccessibleName(this.am.getText());
+    this.v.getAccessibleContext().setAccessibleName(this.l.getText());
+    this.Z.getAccessibleContext().setAccessibleName(this.K.getText());
+    this.Q.setIcon(t.do);
+    this.s.setIcon(t.case);
+    getRootPane().setDefaultButton(this.N);
+    this.long.setBackground(Color.white);
+    this.long.setLayout(new GridBagLayout());
+    this.long.add(this.Q, new GridBagConstraints(0, 0, 1, 1, 1.0D, 0.0D, 10, 2, new Insets(0, 0, 0, 0), 0, 0));
+    this.long.add(this.s, new GridBagConstraints(1, 0, 1, 1, 0.0D, 0.0D, 13, 0, new Insets(0, 15, 0, 10), 0, 0));
+    this.ag.setEnabled(true);
+    this.ag.setEditable(true);
+    Dimension dimension = this.ag.getPreferredSize();
+    dimension.width = (this.v.getPreferredSize()).width;
+    this.ag.setPreferredSize(dimension);
+    this.f.setIcon(t.if);
+    this.f.setToolTipText("Clear device IP address/name list");
+    this.f.getAccessibleContext().setAccessibleName(this.f.getToolTipText());
+    this.ak.setName("progressBar");
+    this.ak.setStringPainted(true);
+    this.ac.setLayout(this.d);
+    this.ac.setName("progressPanel");
+    this.void.setName("errorLabel");
+    this.ac.add(this.void, new GridBagConstraints(0, 0, 1, 1, 1.0D, 0.0D, 17, 2, new Insets(0, 8, 8, 8), 0, 0));
+    this.ac.add(this.ak, new GridBagConstraints(1, 0, 1, 1, 0.0D, 0.0D, 17, 0, new Insets(0, 8, 8, 8), 0, 0));
+    this.ac.setPreferredSize(this.ac.getPreferredSize());
+    this.N.setPreferredSize(this.u.getPreferredSize());
+    this.W.setLayout(this.H);
+    this.W.add(this.long, new GridBagConstraints(0, 0, 3, 1, 1.0D, 0.0D, 11, 2, new Insets(0, 0, 8, 0), 0, 0));
+    this.W.add(this.ac, new GridBagConstraints(0, 1, 3, 1, 1.0D, 0.0D, 11, 2, new Insets(0, 0, 0, 0), 0, 0));
+    if (!for) {
+      this.W.add(this.am, new GridBagConstraints(0, 2, 1, 1, 0.0D, 0.0D, 17, 0, new Insets(0, 8, 8, 4), 0, 0));
+      this.W.add(this.ag, new GridBagConstraints(1, 2, 1, 1, 1.0D, 0.0D, 17, 2, new Insets(0, 0, 8, 8), 36, 2));
+    }
+    this.W.add(this.a, new GridBagConstraints(0, 3, 3, 1, 1.0D, 0.0D, 17, 2, new Insets(0, 8, 8, 8), 0, 0));
+    this.W.add(this.l, new GridBagConstraints(0, 4, 1, 1, 0.0D, 0.0D, 17, 0, new Insets(0, 8, 8, 4), 0, 0));
+    this.W.add(this.v, new GridBagConstraints(1, 4, 1, 1, 1.0D, 0.0D, 17, 2, new Insets(0, 0, 8, 8), 0, 0));
+    this.W.add(this.K, new GridBagConstraints(0, 5, 1, 1, 0.0D, 0.0D, 17, 0, new Insets(0, 8, 8, 4), 0, 0));
+    this.W.add(this.Z, new GridBagConstraints(1, 5, 1, 1, 1.0D, 0.0D, 17, 2, new Insets(0, 0, 8, 8), 0, 0));
+    this.W.add(this.O, new GridBagConstraints(1, 6, 1, 1, 1.0D, 0.0D, 17, 2, new Insets(0, 0, 8, 8), 0, 0));
+    this.m.setLayout(this.goto);
+    if (System.getProperty("os.name", "Windows").startsWith("Mac OS")) {
+      this.m.add(this.u);
+      this.m.add(this.N);
+    } else {
+      this.m.add(this.N);
+      this.m.add(this.u);
+    }
+    this.W.add(new JLabel(), new GridBagConstraints(0, 9, 3, 1, 1.0D, 1.0D, 10, 1, new Insets(0, 0, 0, 0), 0, 0));
+    this.W.add(this.m, new GridBagConstraints(0, 10, 3, 1, 1.0D, 0.0D, 17, 2, new Insets(0, 0, 0, 0), 0, 0));
+    this.null.setIcon(t.try);
+    this.null.setToolTipText("SSL secured");
+    this.j = new JButton(new AbstractAction("", t.new) {
+          public void actionPerformed(ActionEvent param1ActionEvent) {
+            i.a();
+          }
+        });
+    this.j.setToolTipText("Show Java console");
+    this.j.getAccessibleContext().setAccessibleName(this.j.getToolTipText());
+    this.h.setFloatable(false);
+    this.h.add(Box.createHorizontalGlue());
+    if (!for) {
+      this.h.addSeparator();
+      this.h.add(this.f);
+    }
+    this.h.addSeparator();
+    this.h.add(this.j);
+    this.h.addSeparator();
+    this.h.add(this.null);
+    this.W.add(new JSeparator(), new GridBagConstraints(0, 10, 3, 1, 1.0D, 0.0D, 17, 2, new Insets(0, 0, 0, 0), 0, 0));
+    this.W.add(this.h, new GridBagConstraints(0, 11, 3, 1, 1.0D, 0.0D, 17, 2, new Insets(0, 0, 0, 0), 0, 0));
+    this.ae.setVisible(false);
+    this.ak.setVisible(false);
+    getContentPane().setLayout(this.aa);
+    getContentPane().add(this.W, "Center");
+  }
+
+  private static String a(int paramInt) {
+    String str = "";
+    if (paramInt >= 0 && paramInt <= 7) {
+      try {
+        str = X[paramInt];
+      } catch (Exception exception) {
+        str = "";
+      }
+      if (n && paramInt == 4)
+        str = "Loading cached software...";
+    }
+    return str;
+  }
+
+  private static void do() {
+    System.out.println("\n---------------------------------------------\n");
+    System.out.println("Application Logging Ended at " + new Date());
+  }
+
+  public static void g() {
+    String str1 = System.getProperty("user.home");
+    if (str1 == null)
+      str1 = ".";
+    String str2 = str1 + File.separator + System.getProperty("applicationDir", ".asdm");
+    I = str2 + File.separator + "cache";
+    I = I.replace('\\', '/');
+    c = str2 + File.separator + "data";
+    t = c + File.separator + "deviceinfo.conf";
+    D = str2 + File.separator + "log";
+    String str3 = System.getProperty("user.dir");
+    if (str3 == null)
+      str3 = ".";
+    R = str3 + File.separator + "demo";
+  }
+
+  public static void k() {
+    t.a();
+  }
+
+  private void char() {
+    String str = "/version.prop";
+    try {
+      InputStream inputStream = Launcher.a(str);
+      Properties properties = new Properties();
+      properties.load(inputStream);
+      this.p = properties.getProperty("launcher.version");
+      inputStream.close();
+      System.out.println("Local Launcher Version = " + this.p);
+      this.int = int(this.p);
+      System.out.println("Local Launcher Version Display = " + this.int);
+    } catch (Exception exception) {
+      System.out.println("Exception in loadVersionInfo: Version file not found");
+    }
+  }
+
+  private void b() {
+    Properties properties = new Properties();
+    FileInputStream fileInputStream = null;
+    File file = new File(t);
+    try {
+      fileInputStream = new FileInputStream(file);
+      if (fileInputStream != null)
+        properties.load(fileInputStream);
+    } catch (FileNotFoundException fileNotFoundException) {
+      System.out.println("Cannot read profile file " + t + ".");
+    } catch (IOException iOException) {
+      System.out.println("Cannot read profile file " + t + ".");
+      iOException.printStackTrace(System.out);
+    } finally {
+      file = null;
+      if (fileInputStream != null)
+        try {
+          fileInputStream.close();
+          fileInputStream = null;
+        } catch (IOException iOException) {
+          System.out.println("Launcher: problem closing input stream.");
+        }
+    }
+    Vector vector = new Vector(properties.size());
+    for (byte b = 0; b < properties.size(); b++) {
+      String str1 = properties.getProperty("ipAddress" + b);
+      String str2 = properties.getProperty("userName" + b);
+      if (str1 != null) {
+        this.an.put(str1, (str2 != null) ? str2 : "");
+        vector.add(str1);
+      }
+    }
+    this.ag.a(vector);
+    String str = properties.getProperty("preferredIP");
+    if (str != null)
+      this.ag.configureEditor(this.ag.getEditor(), str);
+    itemStateChanged(new ItemEvent(this.ag, 0, "OK", 1));
+  }
+
+  private void l() {
+    Properties properties = new Properties();
+    Enumeration enumeration = this.an.keys();
+    for (byte b = 1; enumeration.hasMoreElements(); b++) {
+      String str1 = enumeration.nextElement();
+      String str2 = (String)this.an.get(str1);
+      if (str1 != null)
+        properties.setProperty("ipAddress" + b, str1);
+      if (str2 != null)
+        properties.setProperty("userName" + b, str2);
+    }
+    properties.setProperty("preferredIP", d.null(this.b));
+    FileOutputStream fileOutputStream = null;
+    File file = new File(t);
+    if (!file.exists())
+      file.getParentFile().mkdirs();
+    try {
+      fileOutputStream = new FileOutputStream(file);
+      properties.store(fileOutputStream, "Generated by Launcher.  Please do not edit.");
+    } catch (FileNotFoundException fileNotFoundException) {
+      System.out.println("Cannot write to profile file " + t);
+    } catch (IOException iOException) {
+      System.out.println("Cannot write to profile file " + t);
+    } finally {
+      file = null;
+      if (fileOutputStream != null)
+        try {
+          fileOutputStream.close();
+          fileOutputStream = null;
+        } catch (IOException iOException) {
+          System.out.println("Launcher: problem closing output stream.");
+        }
+    }
+  }
+
+  private void h() {
+    addWindowListener(this);
+    this.v.addKeyListener(this);
+    this.v.addFocusListener(this);
+    this.Z.addKeyListener(this);
+    this.Z.addFocusListener(this);
+    this.N.addActionListener(this);
+    this.N.addKeyListener(this);
+    this.u.addActionListener(this);
+    this.ag.addItemListener(this);
+    this.f.addActionListener(this);
+  }
+
+  public void n() {
+    this.b = "http://localhost";
+    a("Contacting the local server.  Please wait...");
+    try {
+      h h = new h();
+      h.try(this.ae.if());
+      String str = this.ae.a();
+      if (!h.a(str))
+        str = d.else(str);
+      h.new(str);
+      h.do();
+      this.b += ":" + h.if();
+    } catch (Exception exception) {
+      exception.printStackTrace();
+    }
+    else();
+  }
+
+  public void actionPerformed(ActionEvent paramActionEvent) {
+    String str1 = null;
+    String str2 = null;
+    Object object = paramActionEvent.getSource();
+    if (object == this.N) {
+      if (ClassUtil.try == 6 && ClassUtil.a(this.v.getText(), new String(this.Z.getPassword()))) {
+        JOptionPane.showMessageDialog(this, " JRE 6 does not support long username/password.  The recommendation is to upgrade to JRE 7. ", "Error", 0);
+      } else {
+        System.out.println("OK button clicked");
+        a("");
+        n = false;
+        this.b = a();
+        if (this.b.length() == 0) {
+          JOptionPane.showMessageDialog(this, "Please provide the IP address or hostname of the device to connect to.", "Error", 0);
+          return;
+        }
+        if (!this.b.startsWith("http") && this.b.indexOf("/admin") != -1) {
+          JOptionPane.showMessageDialog(this, this.b + " is not a valid IP address or hostname.", "Error", 0);
+          return;
+        }
+        d.try(this.b);
+        if (this.v.getText() != null && this.v.getText().length() > 64) {
+          JOptionPane.showMessageDialog(this, "Username must be less than 64 chars.", "Error", 0);
+          return;
+        }
+        a(false);
+        this.C = new PasswordAuthentication(this.v.getText(), this.Z.getPassword());
+        ah.a(this.C);
+        this.else = i();
+        this.e = long();
+        a("Contacting the device.  Please wait...");
+        if (!w) {
+          if (!for)
+            w.a();
+          w = true;
+        }
+        if (this.b.startsWith("http")) {
+          if (String_.contains(this.b, "?")) {
+            str1 = this.b.substring(0, this.b.indexOf("?")) + "/idm/issue.net";
+            str2 = this.b.substring(0, this.b.indexOf("?")) + "/admin/login_banner";
+          } else {
+            str1 = this.b + "/idm/issue.net";
+            str2 = this.b + "/admin/login_banner";
+          }
+        } else {
+          str1 = "https://" + this.b + "/idm/issue.net";
+          str2 = "https://" + this.b + "/admin/login_banner";
+        }
+        if (d.else >= 4) {
+          System.out.println("System Parameters ---- Started-----");
+          for (Map.Entry<Object, Object> entry : System.getProperties().entrySet())
+            System.out.println((new StringBuffer()).append(entry.getKey()).append(" = ").append(entry.getValue()).toString());
+          System.out.println("System Parameters ---- Ended-----");
+        }
+        String str = new(str2);
+        if (str == null)
+          str = new(str1);
+        try(str);
+        else();
+      }
+    } else if (object == this.u) {
+      System.out.println("Cancel button clicked");
+      if();
+    }
+    if (object == this.f) {
+      Object[] arrayOfObject = { "OK", "Cancel" };
+      int i = JOptionPane.showOptionDialog(this, "Are you sure you want to clear Launcher's device history?", "Warning", -1, 2, null, arrayOfObject, arrayOfObject[0]);
+      if (i == 0) {
+        File file = new File(t);
+        file.delete();
+        this.ag.removeAllItems();
+        this.an.clear();
+      }
+    }
+  }
+
+  private void try(String paramString) {
+    if (paramString != null && paramString.length() != 0)
+      JOptionPane.showMessageDialog(this, paramString, "Login Banner", 1);
+  }
+
+  public static String new(String paramString) {
+    StringBuffer stringBuffer = new StringBuffer();
+    InputStreamReader inputStreamReader = null;
+    BufferedReader bufferedReader = null;
+    String str1 = "";
+    String str2 = null;
+    byte b = 100;
+    HttpURLConnection httpURLConnection = null;
+    try {
+      URL uRL = new URL(paramString);
+      httpURLConnection = (HttpURLConnection)uRL.openConnection();
+      httpURLConnection.setDoOutput(true);
+      httpURLConnection.setConnectTimeout(30000);
+      httpURLConnection.setReadTimeout(30000);
+      httpURLConnection.setInstanceFollowRedirects(false);
+      inputStreamReader = new InputStreamReader(httpURLConnection.getInputStream());
+      bufferedReader = new BufferedReader(inputStreamReader);
+      while ((str2 = bufferedReader.readLine()) != null) {
+        while (str2.length() > b) {
+          char c = str2.charAt(b);
+          if (c == ' ') {
+            stringBuffer.append(str2.substring(0, b).trim()).append("\n");
+            str2 = str2.substring(b, str2.length()).trim();
+            continue;
+          }
+          String str = str2.substring(0, b).trim();
+          int i = str.lastIndexOf(' ');
+          if (i == -1)
+            i = b;
+          stringBuffer.append(str2.substring(0, i).trim()).append("\n");
+          str2 = str2.substring(i, str2.length()).trim();
+        }
+        if (str2.length() != 0)
+          stringBuffer.append(str2.trim()).append("\n");
+      }
+      if (stringBuffer.toString().trim().length() > 0)
+        str1 = stringBuffer.toString().trim();
+    } catch (FileNotFoundException fileNotFoundException) {
+      System.out.println("Info: Pre-login banner not supported at " + paramString);
+      if (String_.contains(paramString, "login_banner"))
+        r = fileNotFoundException;
+      str1 = null;
+    } catch (Exception exception) {
+      if (exception.getLocalizedMessage().equals("java.security.cert.CertificateException: Java couldn't trust Server") || exception.getLocalizedMessage().equals("javax.net.ssl.SSLHandshakeException: java.security.cert.CertificateException: Java couldn't trust Server")) {
+        System.out.println("The ASA doesn't have a certificate trusted by Java.");
+      } else {
+        exception.printStackTrace();
+      }
+      if (String_.contains(paramString, "login_banner"))
+        r = exception;
+      str1 = null;
+    } finally {
+      try {
+        if (bufferedReader != null)
+          bufferedReader.close();
+      } catch (Exception exception) {
+        exception.printStackTrace();
+      }
+    }
+    return str1;
+  }
+
+  public static String o() {
+    String[] arrayOfString = { System.getProperty("java.home") + File.separator + "bin" + File.separator + "javaws.exe", System.getenv("SYSTEMROOT") + File.separator + "syswow64" + File.separator + "javaws.exe", System.getenv("SYSTEMROOT") + File.separator + "system32" + File.separator + "javaws.exe" };
+    return for(arrayOfString);
+  }
+
+  public static String m() {
+    String[] arrayOfString = { "/Library/Internet\\ Plug-Ins/JavaAppletPlugin.plugin/Contents/Home/bin/javaws", "/Library/Application\\ Support/Oracle/Java/javaws", "/usr/bin/javaws" };
+    return for(arrayOfString);
+  }
+
+  public static String for(String[] paramArrayOfString) throws RuntimeException {
+    String str = null;
+    for (String str1 : paramArrayOfString) {
+      File file = new File(str1);
+      if (file.exists()) {
+        str = str1;
+        break;
+      }
+    }
+    if (str == null)
+      throw new RuntimeException("Couldn't find javaws");
+    return str;
+  }
+
+  public static String char(String paramString) throws Exception {
+    StringWriter stringWriter = new StringWriter();
+    Process process = Runtime.getRuntime().exec(paramString);
+    InputStream inputStream = process.getInputStream();
+    int i = 0;
+    while ((i = inputStream.read()) != -1)
+      stringWriter.write(i);
+    String str = stringWriter.toString();
+    try {
+      process.waitFor();
+    } catch (Throwable throwable) {
+      System.out.println(throwable.getMessage());
+    }
+    if (process.exitValue() == -1)
+      throw new Exception("REG QUERY command returned with exit code -1");
+    return str;
+  }
+
+  public void else() {
+    final s pdmLoginWindow = this;
+    g g = new g() {
+        Exception try = null;
+
+        StackTraceElement[] int = (s.r != null) ? s.r.getStackTrace() : null;
+
+        int new = 0;
+
+        public Object a() {
+          try {
+            if (s.this.new()) {
+              if (!s.for)
+                this.new = s.this.d();
+            } else {
+              this.new = -2;
+            }
+          } catch (Exception exception) {
+            this.try = exception;
+          }
+          return this.try;
+        }
+
+        public void if() {
+          if (this.new == 1) {
+            if (ClassUtil.if) {
+              s.this.c();
+            } else {
+              s.this.e();
+            }
+          } else {
+            if (this.new == -1) {
+              s.this.a("The user cancelled the connect operation.");
+              s.this.a(true);
+              return;
+            }
+            if (this.new == -2) {
+              if (ClassUtil.if(8) && ClassUtil.a(20)) {
+                JOptionPane.showMessageDialog(pdmLoginWindow, "Unable to launch device manager from " + s.this.b, "Error", 0);
+                s.this.a(true);
+                return;
+              }
+              if (s.r != null && String_.contains(s.r.getLocalizedMessage(), "Java couldn't trust Server") && !s.for) {
+                final JEditorPane editorPane = new JEditorPane();
+                jEditorPane.setPreferredSize(new Dimension(500, 180));
+                jEditorPane.setEditable(false);
+                jEditorPane.setContentType("text/html");
+                jEditorPane.setText("<html><body>ASDM will start up using Java Web Start. For ASDM 7.3(1) and later, you will be prompted to follow the wizard to create a self-signed certficate. For earlier ASDM versions, follow the <a href='http://www.cisco.com/c/en/us/td/docs/security/asdm/identity-cert/cert-install.html'><b>manual instructions</b></a> to create a self-signed certificate.Would you like to continue with self-signed cert enrollment?</body></html>");
+                jEditorPane.addHyperlinkListener(new HyperlinkListener() {
+                      public void hyperlinkUpdate(final HyperlinkEvent e) {
+                        if (e.getEventType() == HyperlinkEvent.EventType.ENTERED) {
+                          EventQueue.invokeLater(new Runnable() {
+                                public void run() {
+                                  SwingUtilities.getWindowAncestor(editorPane).setCursor(Cursor.getPredefinedCursor(0));
+                                  editorPane.setToolTipText(e.getURL().toExternalForm());
+                                }
+                              });
+                        } else if (e.getEventType() == HyperlinkEvent.EventType.EXITED) {
+                          EventQueue.invokeLater(new Runnable() {
+                                public void run() {
+                                  SwingUtilities.getWindowAncestor(editorPane).setCursor(Cursor.getDefaultCursor());
+                                  editorPane.setToolTipText((String)null);
+                                }
+                              });
+                        } else if (e.getEventType() == HyperlinkEvent.EventType.ACTIVATED && Desktop.isDesktopSupported()) {
+                          try {
+                            Desktop.getDesktop().browse(e.getURL().toURI());
+                          } catch (Exception exception) {
+                            exception.printStackTrace();
+                          }
+                        }
+                      }
+                    });
+                int i = JOptionPane.showConfirmDialog(pdmLoginWindow, new JScrollPane(jEditorPane), "Certification Error", 0);
+                if (i == 0) {
+                  String str1 = ClassUtil.if ? s.o() : s.m();
+                  String str2 = str1 + " -Xnosplash https://" + s.this.b + "/admin/public/cert.jnlp";
+                  System.out.println("cmd " + str2);
+                  try {
+                    s.char(str2);
+                    s.this.goto();
+                    s.this.if();
+                  } catch (Exception exception) {
+                    exception.printStackTrace();
+                  }
+                } else if (i == 1) {
+                  JOptionPane.showMessageDialog(pdmLoginWindow, "Please launch ASDM from the browser using Java Web Start.");
+                }
+                s.this.a(true);
+                return;
+              }
+              JOptionPane.showMessageDialog(pdmLoginWindow, "Unable to launch device manager from " + s.this.b, "Error", 0);
+              s.this.a(true);
+              return;
+            }
+            if (this.try != null) {
+              System.out.println("Launcher Version checking failed with " + this.try);
+              s.this.a(this.try);
+              s.this.a(true);
+              return;
+            }
+            s.this.try();
+          }
+        }
+      };
+    g.for();
+  }
+
+  private void try() {
+    System.out.println("invoking SGZ Loader..");
+    ArrayList arrayList = new ArrayList();
+    arrayList.add("-codebase=" + this.case);
+    arrayList.add("-sgzTarget=" + new);
+    arrayList.add("-dynApplet=" + System.getProperty("dynApplet", B));
+    arrayList.add("-dynArchives=" + System.getProperty("dynArchives", F));
+    arrayList.add("-errorUrl=error.html");
+    arrayList.add("-cacheDir=" + I);
+    arrayList.add("-appMode=true");
+    arrayList.add("-username=" + z.a(this.else));
+    arrayList.add("-password=" + z.a(this.e));
+    int i;
+    if (this.i != null && (i = this.i.indexOf("debug")) != -1) {
+      int j = this.i.indexOf('&', i);
+      if (j == -1) {
+        arrayList.add("-debug" + this.i.substring(i + 5));
+      } else {
+        arrayList.add("-debug" + this.i.substring(i + 5, j));
+      }
+      arrayList.add("-verbose=true");
+    }
+    if (this.i != null && this.i.indexOf("force") != -1)
+      arrayList.add("-force=true");
+    if (this.i != null && this.i.indexOf("ccoupgrade") != -1)
+      arrayList.add("-ccoupgrade=true");
+    if (this.i != null && this.i.indexOf("traceLoading") != -1)
+      arrayList.add("-traceLoading=true");
+    System.out.println("Cache location = " + I);
+    String[] arrayOfString = new String[arrayList.size()];
+    arrayList.toArray(arrayOfString);
+    try {
+      Loader.main(arrayOfString);
+    } catch (Exception exception) {
+      JOptionPane.showMessageDialog(this, exception.getMessage(), "Error", 0);
+    }
+  }
+
+  private void a(Exception paramException) {
+    if (paramException != null) {
+      a("");
+      String str = a(paramException, this.b);
+      if (str != null)
+        JOptionPane.showMessageDialog(this, "Unable to launch ASDM-IDM from " + this.b + ":\n" + str, "Error", 0);
+    }
+  }
+
+  private String a(Exception paramException, String paramString) {
+    String str;
+    if (paramException instanceof java.net.UnknownHostException) {
+      str = "Host " + paramString + " is unknown.";
+    } else if (paramException instanceof java.net.ConnectException) {
+      str = "Connection timed out.";
+    } else if (paramException.getCause() instanceof java.security.cert.CertificateException) {
+      Throwable throwable = paramException.getCause();
+      if (throwable.getMessage().indexOf("couldn't trust Server") != -1) {
+        str = null;
+      } else {
+        str = throwable.getMessage();
+      }
+    } else if (paramException instanceof IOException && paramException.getMessage().startsWith("Server returned HTTP response code: 401")) {
+      str = "Authentication failed.";
+    } else {
+      str = paramException.getMessage();
+    }
+    return str;
+  }
+
+  private int p() throws Exception {
+    this.U = System.getProperty("applicationVer", this.U);
+    a("Checking the launcher version compatibility...");
+    if (this.U == null)
+      throw new IllegalAccessException("Unable to read Device Manager version from device.");
+    float f = 0.0F;
+    try {
+      f = (new Float(this.U.substring(0, 3))).floatValue();
+    } catch (Exception exception) {
+      System.out.println("Error in finding major DM version; version str=" + this.U);
+    }
+    if (f < 5.0F)
+      throw new IllegalAccessException("Device " + this.b + " uses PDM " + this.U + "as its device manager.\nASDM Launcher supports ASDM 5.0 or higher only.");
+    return 0;
+  }
+
+  private void e() {
+    try {
+      Desktop desktop = Desktop.getDesktop();
+      URI uRI = new URI("https://" + this.b + "/admin/dm-launcher.dmg");
+      desktop.browse(uRI);
+    } catch (Exception exception) {
+      System.out.println("Launcher download process failed with " + exception);
+      a(exception);
+      a(true);
+      return;
+    }
+    goto();
+    if();
+  }
+
+  private void c() {
+    g g = new g() {
+        Exception for = null;
+
+        public Object a() {
+          try {
+            s.this.byte(s.this.case + s.this.aj);
+          } catch (Exception exception) {
+            this.for = exception;
+          }
+          return this.for;
+        }
+
+        public void if() {
+          if (this.for != null) {
+            System.out.println("Launcher upgrade process failed with " + this.for);
+            s.this.a(this.for);
+            s.this.a(true);
+            return;
+          }
+          s.this.goto();
+          s.this.if();
+        }
+      };
+    g.for();
+  }
+
+  private void byte(String paramString) throws Exception {
+    File file = new File(I + "/dm-install-tmp.msi");
+    FileOutputStream fileOutputStream = null;
+    DataInputStream dataInputStream = null;
+    DataOutputStream dataOutputStream = null;
+    try {
+      a("Upgrading to the latest Launcher.  Please wait...");
+      file.getParentFile().mkdirs();
+      fileOutputStream = new FileOutputStream(file);
+      URL uRL = new URL(paramString);
+      InputStream inputStream = null;
+      System.out.println("Upgrading launcher program; src=" + uRL + " local file=" + file.getAbsolutePath());
+      if (this.P == L) {
+        r r = new r(i(), long());
+        inputStream = r.a(uRL);
+      } else {
+        inputStream = w.a(uRL, i(), long());
+      }
+      if (inputStream == null)
+        throw new IOException("Error. Not able to upgrade Launcher.");
+      a("Downloading latest Launcher...");
+      if (!this.ak.isVisible()) {
+        this.ak.setVisible(true);
+        if (this.M == 0) {
+          this.ak.setIndeterminate(true);
+          this.ak.setStringPainted(false);
+        } else {
+          this.ak.setIndeterminate(false);
+          this.ak.setStringPainted(false);
+        }
+      }
+      dataInputStream = new DataInputStream(inputStream);
+      dataOutputStream = new DataOutputStream(fileOutputStream);
+      byte[] arrayOfByte = new byte[1024];
+      int i = 0;
+      int j = 0;
+      while ((i = dataInputStream.read(arrayOfByte, 0, arrayOfByte.length)) != -1) {
+        dataOutputStream.write(arrayOfByte, 0, i);
+        j += i;
+        if (this.M != 0)
+          this.ak.setValue(j * 100 / this.M);
+      }
+    } catch (Exception exception) {
+      exception.printStackTrace();
+      throw exception;
+    } finally {
+      try {
+        if (dataInputStream != null)
+          dataInputStream.close();
+        if (dataOutputStream != null)
+          dataOutputStream.close();
+        if (fileOutputStream != null)
+          fileOutputStream.close();
+      } catch (IOException iOException) {}
+      dataInputStream = null;
+      dataOutputStream = null;
+      fileOutputStream = null;
+    }
+    a("Starting the Launcher installation program...");
+    String str = "msiexec /I \"" + file.getAbsolutePath() + "\"";
+    System.out.println("Execing the install program; cmd=" + str);
+    try {
+      Runtime.getRuntime().exec(str);
+    } catch (IOException iOException) {
+      System.out.println("Not able to exec the pgm " + this.aj);
+      iOException.printStackTrace();
+      throw iOException;
+    }
+  }
+
+  private float if(String paramString) {
+    if (paramString == null)
+      return 0.0F;
+    float f = 0.0F;
+    try {
+      f = (new Float(paramString.substring(0, 3))).floatValue();
+    } catch (Exception exception) {
+      System.out.println("Error in finding major version; version str=" + paramString);
+    }
+    return f;
+  }
+
+  private int for(String paramString) {
+    if (paramString == null)
+      return 0;
+    int i = 0;
+    try {
+      i = Integer.parseInt(paramString.substring(4, paramString.length()));
+    } catch (Exception exception) {
+      System.out.println("Error in finding minor version; version str=" + paramString);
+    }
+    return i;
+  }
+
+  private String int(String paramString) {
+    return if(paramString) + "(" + for(paramString) + ")";
+  }
+
+  public void itemStateChanged(ItemEvent paramItemEvent) {
+    Object object = paramItemEvent.getSource();
+    if (object == this.ag) {
+      String str = d.null(a());
+      if (str.length() > 0) {
+        String str1 = (String)this.an.get(str);
+        this.v.setText(str1);
+        this.O.setSelected((str1 != null && !str1.equals("")));
+        this.Z.setText("");
+      } else {
+        this.v.setText("");
+        this.O.setSelected(false);
+      }
+    }
+  }
+
+  public void keyPressed(KeyEvent paramKeyEvent) {}
+
+  public void keyReleased(KeyEvent paramKeyEvent) {}
+
+  public void keyTyped(KeyEvent paramKeyEvent) {
+    if (paramKeyEvent.getSource() == this.v)
+      this.O.setSelected(false);
+    if (paramKeyEvent.getKeyChar() == '\n')
+      actionPerformed(new ActionEvent(this.N, 0, "OK"));
+  }
+
+  public void focusGained(FocusEvent paramFocusEvent) {
+    if (paramFocusEvent.getSource() == this.v) {
+      this.v.selectAll();
+    } else if (paramFocusEvent.getSource() == this.Z) {
+      this.Z.selectAll();
+    }
+  }
+
+  public void focusLost(FocusEvent paramFocusEvent) {}
+
+  public void windowClosed(WindowEvent paramWindowEvent) {}
+
+  public void windowIconified(WindowEvent paramWindowEvent) {}
+
+  public void windowOpened(WindowEvent paramWindowEvent) {}
+
+  public void windowClosing(WindowEvent paramWindowEvent) {
+    if();
+  }
+
+  public void windowDeiconified(WindowEvent paramWindowEvent) {}
+
+  public void windowActivated(WindowEvent paramWindowEvent) {}
+
+  public void windowDeactivated(WindowEvent paramWindowEvent) {}
+
+  public void case() {
+    a("Invalid username or password.  Please try again.");
+    a(true);
+  }
+
+  public void a(PasswordAuthentication paramPasswordAuthentication) {
+    this.v.setText(paramPasswordAuthentication.getUserName());
+    this.Z.setText(String.valueOf(paramPasswordAuthentication.getPassword()));
+  }
+
+  private void if() {
+    System.out.println("Closing the login window app.");
+    setVisible(false);
+    do();
+    System.exit(0);
+  }
+
+  public static void f() {
+    System.out.println("Hiding the login window");
+    ad.setVisible(false);
+  }
+
+  void a(boolean paramBoolean) {
+    setCursor(Cursor.getPredefinedCursor(paramBoolean ? 0 : 3));
+    this.N.setEnabled(paramBoolean);
+    this.u.setEnabled(paramBoolean);
+    this.ag.setEditable(paramBoolean);
+    this.v.setEditable(paramBoolean);
+    this.Z.setEditable(paramBoolean);
+    this.ag.setEnabled(paramBoolean);
+    this.v.setEnabled(paramBoolean);
+    this.Z.setEnabled(paramBoolean);
+    this.f.setEnabled(paramBoolean);
+  }
+
+  private boolean new() {
+    boolean bool = false;
+    bool = null();
+    if (!bool)
+      bool = for();
+    return bool;
+  }
+
+  private String a() {
+    String str1 = for ? E : this.ag.do().trim();
+    String str2 = d.byte(str1);
+    if (d.for(str2))
+      str1 = String_.replace(str1, str2, d.do(str2));
+    return str1;
+  }
+
+  private String i() {
+    return (this.C != null) ? this.C.getUserName() : null;
+  }
+
+  private String long() {
+    return (this.C != null) ? String.valueOf(this.C.getPassword()) : null;
+  }
+
+  PasswordAuthentication int() {
+    return this.C;
+  }
+
+  private void a(String paramString) {
+    this.void.setText(paramString);
+  }
+
+  public void do(boolean paramBoolean) {
+    this.Z.setEnabled(paramBoolean);
+    this.v.setEnabled(paramBoolean);
+    this.ag.setEnabled(paramBoolean);
+    this.f.setEnabled(paramBoolean);
+    this.Z.setEditable(paramBoolean);
+    this.v.setEditable(paramBoolean);
+    this.ag.setEditable(paramBoolean);
+  }
+
+  public void if(boolean paramBoolean) {
+    this.ae.setVisible(paramBoolean);
+    pack();
+  }
+
+  private static String do(String[] paramArrayOfString) {
+    String str = null;
+    if (paramArrayOfString != null)
+      if (paramArrayOfString.length >= 2 && paramArrayOfString[0].equalsIgnoreCase("/install")) {
+        str = paramArrayOfString[1];
+      } else if (paramArrayOfString.length >= 1 && paramArrayOfString[0].equalsIgnoreCase("/auto-connect")) {
+        if (paramArrayOfString.length >= 2) {
+          if = true;
+        } else {
+          System.out.println("Usage : asdm-launcher.exe /auto-connect <ip_address>  [-nousername|-username <username>] [-nopassoword|-password <password>]");
+        }
+      } else if (paramArrayOfString.length >= 2 && paramArrayOfString[0].equalsIgnoreCase("/webstart")) {
+        for = true;
+        E = paramArrayOfString[1];
+        if (paramArrayOfString.length >= 3) {
+          String[] arrayOfString = new String[paramArrayOfString.length - 2];
+          System.arraycopy(paramArrayOfString, 2, arrayOfString, 0, paramArrayOfString.length - 2);
+          int(arrayOfString);
+        }
+      }
+    return str;
+  }
+
+  private static void int(String[] paramArrayOfString) {
+    for (byte b = 0; b < paramArrayOfString.length; b++) {
+      String[] arrayOfString = paramArrayOfString[b].split("=");
+      String str1 = arrayOfString[0];
+      String str2 = (arrayOfString.length > 1) ? arrayOfString[1] : "";
+      assert arrayOfString.length <= 2;
+      if (case(str1)) {
+        System.setProperty(str1.substring(1), str2);
+        System.out.println(str1.substring(1) + " = " + str2);
+      }
+    }
+  }
+
+  private static boolean case(String paramString) {
+    for (byte b = 0; b < J.length; b++) {
+      if (J[b].equals(paramString))
+        return true;
+    }
+    return false;
+  }
+
+  private static void a(String[] paramArrayOfString) {
+    String str1 = "";
+    if (paramArrayOfString[1] != null && paramArrayOfString[1].length() > 0)
+      str1 = paramArrayOfString[1];
+    String str2 = "";
+    String str3 = "";
+    for (byte b = 0; b < paramArrayOfString.length; b++) {
+      if (paramArrayOfString[b].equalsIgnoreCase("-password")) {
+        str3 = paramArrayOfString[++b];
+      } else if (paramArrayOfString[b].equalsIgnoreCase("-nopassword")) {
+        str3 = "";
+      } else if (paramArrayOfString[b].equalsIgnoreCase("-username")) {
+        str2 = paramArrayOfString[++b];
+      } else if (paramArrayOfString[b].equalsIgnoreCase("-nousername")) {
+        str2 = "";
+      }
+    }
+    ad.ag.if.setItem(str1);
+    ad.v.setText(str2);
+    ad.Z.setText(str3);
+    ActionEvent actionEvent = new ActionEvent(ad.N, 1, "OK");
+    ad.actionPerformed(actionEvent);
+  }
+
+  private boolean for() {
+    String str1 = "";
+    String str2 = "";
+    if (this.b.startsWith("http:") || this.b.startsWith("https:")) {
+      str1 = this.b + "/idm/idm.jnlp/";
+      str2 = this.b + "/protected/idm/idmversion.html";
+    } else {
+      str1 = "https://" + this.b + "/idm/idm.jnlp/";
+      str2 = "https://" + this.b + "/protected/idm/idmversion.html";
+    }
+    System.out.println("Trying for IDM. url=" + str1);
+    InputStream inputStream = null;
+    try {
+      inputStream = w.a(new URL(str1), null, null);
+      a(inputStream);
+      this.case = System.getProperty("codebase");
+      if (this.case == null)
+        throw new FileNotFoundException();
+      this.P = try;
+      I = System.getProperty("user.home") + File.separator + System.getProperty("applicationDir", ".idm") + File.separator + "cache";
+      I = I.replace('\\', '/');
+      this.Y = System.getProperty("launcher.version");
+      String str = System.getProperty("launcher.size", "");
+      this.aj = System.getProperty("launcher.file");
+      System.out.println("Server Launcher Version = " + this.Y + ", size = " + str + " bytes");
+      try {
+        this.M = Integer.parseInt(str);
+      } catch (NumberFormatException numberFormatException) {
+        numberFormatException.printStackTrace();
+      }
+    } catch (FileNotFoundException fileNotFoundException) {
+      System.out.println("Not IDM.");
+      return false;
+    } catch (Exception exception) {
+      if (exception.getLocalizedMessage().equals("java.security.cert.CertificateException: Java couldn't trust Server") || exception.getLocalizedMessage().equals("javax.net.ssl.SSLHandshakeException: java.security.cert.CertificateException: Java couldn't trust Server")) {
+        System.out.println("The ASA doesn't have a certificate trusted by Java.");
+      } else {
+        exception.printStackTrace();
+      }
+      return false;
+    }
+    try {
+      r r = new r(i(), long());
+      inputStream = r.a(new URL(str2));
+    } catch (Exception exception) {
+      System.out.println("Error accessing idm version url: " + exception.getMessage());
+    } finally {
+      try {
+        if (inputStream != null)
+          inputStream.close();
+      } catch (Exception exception) {}
+    }
+    return true;
+  }
+
+  private boolean null() {
+    String str = "";
+    if (this.b.startsWith("http")) {
+      int i = this.b.indexOf("?");
+      if (i != -1) {
+        this.i = this.b.substring(i + 1, this.b.length());
+        this.b = this.b.substring(0, i);
+      }
+      str = this.b + "/" + "admin" + "/";
+    } else {
+      str = "https://" + this.b + "/" + "admin" + "/";
+    }
+    boolean bool = false;
+    if (!bool)
+      bool = do(str);
+    if (!bool)
+      return false;
+    this.P = L;
+    this.case = str;
+    setTitle("Cisco ASDM Launcher");
+    return true;
+  }
+
+  private int byte() {
+    if (this.p != null && this.Y != null) {
+      float f1 = if(this.p);
+      float f2 = if(this.Y);
+      int i = for(this.p);
+      int j = for(this.Y);
+      if (f2 > f1 || (f2 == f1 && j > i)) {
+        String str = ClassUtil.if ? "Upgrade Now" : "Download Now";
+        Object[] arrayOfObject = { str, "Cancel" };
+        a("A newer version of Launcher is available.");
+        int k = JOptionPane.showOptionDialog(this, "A newer version of the ASDM-IDM Launcher is available.\n" + (ClassUtil.if ? "To upgrade, click the \"Upgrade Now\" button." : "To upgrade, click the \"Download Now\" button."), "Upgrade Available", -1, 1, null, arrayOfObject, arrayOfObject[0]);
+        if (k == 0) {
+          System.out.println("User selected upgrade option.");
+          return 1;
+        }
+        if (k == 1) {
+          System.out.println("The user cancelled the connect operation.");
+          return -1;
+        }
+      } else {
+        System.out.println("Launcher version checking is successful.");
+        a("Checking the launcher version compatibility...done");
+        return 0;
+      }
+    }
+    return 0;
+  }
+
+  private int d() throws Exception {
+    if (this.P == L) {
+      try {
+        p();
+      } catch (Exception exception) {
+        throw exception;
+      }
+    } else if (this.P == try) {
+
+    }
+    return byte();
+  }
+
+  private void a(InputStream paramInputStream) throws Exception {
+    Document document = null;
+    DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
+    documentBuilderFactory.setIgnoringElementContentWhitespace(true);
+    DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
+    document = documentBuilder.parse(paramInputStream);
+    System.out.println("XML file parsed");
+    NodeList nodeList = document.getDocumentElement().getElementsByTagName("property");
+    if (nodeList != null && nodeList.getLength() > 0)
+      for (byte b = 0; b < nodeList.getLength(); b++) {
+        Element element = (Element)nodeList.item(b);
+        System.setProperty(element.getAttribute("name"), element.getAttribute("value"));
+      }
+  }
+
+  private boolean do(String paramString) {
+    System.out.println("Trying for ASDM Version file; url = " + paramString);
+    r r = new r(i(), long());
+    InputStream inputStream = null;
+    try {
+      URL uRL = new URL(paramString + "version.prop");
+      inputStream = r.a(uRL);
+    } catch (FileNotFoundException fileNotFoundException) {
+      try {
+        URL uRL = new URL(this.case + "pdmversion.html");
+        inputStream = r.a(uRL);
+        inputStream.close();
+      } catch (Exception exception) {
+        System.out.println("No version file found");
+        return false;
+      }
+    } catch (Exception exception) {
+      if (exception.getLocalizedMessage().equals("java.security.cert.CertificateException: Java couldn't trust Server") || exception.getLocalizedMessage().equals("javax.net.ssl.SSLHandshakeException: java.security.cert.CertificateException: Java couldn't trust Server")) {
+        System.out.println("The ASA doesn't have a certificate trusted by Java.");
+      } else {
+        exception.printStackTrace();
+      }
+      return false;
+    }
+    Properties properties = new Properties();
+    try {
+      properties.load(inputStream);
+      inputStream.close();
+    } catch (Exception exception) {
+      exception.printStackTrace();
+    }
+    this.U = properties.getProperty("asdm.version");
+    this.Y = properties.getProperty("launcher.version");
+    String str = properties.getProperty("launcher.size", "");
+    System.out.println("Server Version = " + this.U);
+    System.out.println("Server Launcher Version = " + this.Y + ", size = " + str + " bytes");
+    try {
+      this.M = Integer.parseInt(str);
+    } catch (NumberFormatException numberFormatException) {
+      numberFormatException.printStackTrace();
+    }
+    return true;
+  }
+
+  static {
+    r = null;
+    w = false;
+    do = false;
+    n = false;
+    X = new String[] { "Invalid username or password.  Please try again.", "Connecting to device.  Please wait...", "Connected to device.  Checking for upgrades...", "No upgrades available.  Using cached version...", "Getting updated software...", "Software update completed.", "Loading application.  Please wait...", "Application is starting.  Please wait..." };
+    F = "pdm.sgz";
+    B = "com.cisco.pdm.PDMApplet";
+    new = "com.cisco.nm.dice.loader.Loader";
+    if = false;
+    for = false;
+    L = 0;
+    try = 1;
+    J = new String[] { "/asdm.runStartupWizard", "/asdm.runCertWizard", "/dynArchives", "/dynApplet", "/codebase", "/applicationName", "/applicationDir", "/launcher.version", "/launcher.size", "/launcher.file" };
+  }
+
+  static {
+    if (class$com$cisco$launcher$PDMLoginWindow == null);
+  }
+
+  static class a extends JEditorPane {
+    String a = "Demo software is not installed. Please install demo software from\n <html><head></head><body><a href=\"http://www.cisco.com/pcgi-bin/tablebuild.pl/asa\">http://www.cisco.com/pcgi-bin/tablebuild.pl/asa</a></body></html>";
+
+    public a() {
+      setContentType("text/html");
+      setOpaque(false);
+      setText(this.a);
+      setEditable(false);
+      addMouseListener(new MouseListener() {
+            public void mouseClicked(MouseEvent param2MouseEvent) {
+              try {
+                String str = "rundll32 url.dll,FileProtocolHandler http://www.cisco.com/pcgi-bin/tablebuild.pl/asa ";
+                Runtime.getRuntime().exec(str);
+              } catch (Exception exception) {
+                exception.printStackTrace();
+              }
+            }
+
+            public void mouseReleased(MouseEvent param2MouseEvent) {}
+
+            public void mousePressed(MouseEvent param2MouseEvent) {}
+
+            public void mouseEntered(MouseEvent param2MouseEvent) {}
+
+            public void mouseExited(MouseEvent param2MouseEvent) {}
+          });
+    }
+  }
+}

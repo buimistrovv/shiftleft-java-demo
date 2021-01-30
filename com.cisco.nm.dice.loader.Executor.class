@@ -1,0 +1,139 @@
+package com.cisco.nm.dice.loader;
+
+import com.cisco.nm.util.Str;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.net.URL;
+import java.security.MessageDigest;
+import java.util.Enumeration;
+import java.util.Hashtable;
+import java.util.Vector;
+
+class Executor {
+  private Httpd _httpd;
+
+  private Vector _cmdPrefixVec;
+
+  Hashtable _loaderHandleTab = new Hashtable<Object, Object>();
+
+  Executor(URL paramURL) throws Exception {
+    this._httpd = new Httpd(null);
+    init(this._httpd._socket.getLocalPort(), paramURL);
+  }
+
+  Executor(int paramInt) throws Exception {
+    init(paramInt, Loader._MainLoader.getCodeBase());
+  }
+
+  private final void init(int paramInt, URL paramURL) throws Exception {
+    boolean bool = !File.separator.equals("/") ? true : false;
+    this._cmdPrefixVec = new Vector();
+    this._cmdPrefixVec.addElement(System.getProperty("java.home") + File.separator + "bin" + File.separator + "java" + (bool ? ".exe" : ""));
+    this._cmdPrefixVec.addElement("-classpath");
+    this._cmdPrefixVec.addElement(getDownloadedFile(new URL(paramURL, "diceloader.jar")) + File.pathSeparator + getDownloadedFile(new URL(paramURL, "LZMA.jar")));
+    this._cmdPrefixVec.addElement("com.cisco.nm.dice.loader.Loader");
+    this._cmdPrefixVec.addElement("-codebase=" + paramURL);
+    if (Loader._CacheDir != null)
+      this._cmdPrefixVec.addElement("-cacheDir=" + Loader._CacheDir);
+    if (Loader._Verbose)
+      this._cmdPrefixVec.addElement("-verbose=true");
+    this._cmdPrefixVec.addElement("-sgzProxyPort=" + paramInt);
+  }
+
+  final void destruct() {
+    if (Loader._AutoKillExecedApplets) {
+      Enumeration<LoaderHandle> enumeration = this._loaderHandleTab.elements();
+      while (enumeration.hasMoreElements()) {
+        LoaderHandle loaderHandle = enumeration.nextElement();
+        loaderHandle._proc.destroy();
+      }
+    }
+    if (this._httpd != null) {
+      this._httpd.kill();
+      this._httpd = null;
+    }
+  }
+
+  final String getDownloadedFile(URL paramURL) throws Exception {
+    InputStream inputStream = paramURL.openConnection().getInputStream();
+    MessageDigest messageDigest = MessageDigest.getInstance("MD5");
+    ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+    byte[] arrayOfByte = new byte[1024];
+    while (true) {
+      byte[] arrayOfByte1;
+      int i = inputStream.read(arrayOfByte);
+      if (i < 0) {
+        inputStream.close();
+        byteArrayOutputStream.close();
+        arrayOfByte1 = messageDigest.digest();
+        File file = new File(Loader._CacheDir + "/" + SgzReader.toHex(arrayOfByte1) + ".jar");
+        if (!file.exists()) {
+          FileOutputStream fileOutputStream = new FileOutputStream(file);
+          fileOutputStream.write(byteArrayOutputStream.toByteArray());
+          fileOutputStream.close();
+        }
+        return file.toString();
+      }
+      byteArrayOutputStream.write(arrayOfByte, 0, arrayOfByte1);
+      messageDigest.update(arrayOfByte, 0, arrayOfByte1);
+    }
+  }
+
+  final synchronized void removeLoaderHandle(LoaderHandle paramLoaderHandle) {
+    this._loaderHandleTab.remove(paramLoaderHandle._sgzTarget);
+    if (this._loaderHandleTab.size() < 1)
+      SgzApplet.callJavaScript("close", null);
+  }
+
+  final void exec(String[] paramArrayOfString) throws Exception {
+    String str = Str.getArg(paramArrayOfString, "sgzTarget");
+    if (str == null)
+      str = "_blank" + System.currentTimeMillis();
+    exec(str, paramArrayOfString);
+  }
+
+  final synchronized void exec(String paramString, String[] paramArrayOfString) throws Exception {
+    paramString = paramString.trim();
+    if (Loader._Verbose)
+      System.out.println("exec " + paramString + " " + Str.quoted(paramArrayOfString));
+    LoaderHandle loaderHandle = (LoaderHandle)this._loaderHandleTab.get(paramString);
+    if (loaderHandle == null) {
+      loaderHandle = new LoaderHandle(this);
+      try {
+        Vector<String> vector = (Vector)this._cmdPrefixVec.clone();
+        if (paramArrayOfString != null) {
+          Vector<String> vector1 = new Vector();
+          for (byte b = 0; b < paramArrayOfString.length; b++) {
+            String str = paramArrayOfString[b];
+            if (str != null && str.startsWith("-J-")) {
+              if (str.endsWith("=true"))
+                str = str.substring(0, str.length() - 5);
+              vector.insertElementAt(str.substring(2), 1);
+            } else {
+              vector1.addElement(str);
+            }
+          }
+          loaderHandle._args = new String[vector1.size()];
+          vector1.copyInto((Object[])loaderHandle._args);
+        }
+        vector.addElement("-sgzTarget=" + paramString);
+        if (Loader._Debug)
+          System.out.println("Executor: cmd " + vector);
+        String[] arrayOfString = new String[vector.size()];
+        vector.copyInto((Object[])arrayOfString);
+        loaderHandle._sgzTarget = paramString;
+        this._loaderHandleTab.put(paramString, loaderHandle);
+        loaderHandle._proc = Runtime.getRuntime().exec(arrayOfString);
+        new PipeThread(loaderHandle._proc.getInputStream(), System.out);
+        new PipeThread(loaderHandle._proc.getErrorStream(), System.err);
+        loaderHandle.start();
+      } catch (Exception exception) {
+        exception.printStackTrace();
+      }
+    } else {
+      String str = LoadeeHandle.sendRequest(loaderHandle._loadeePort, "launchSgzApplet?" + Str.ecmaMarshalled(paramArrayOfString));
+    }
+  }
+}
